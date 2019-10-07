@@ -1,6 +1,6 @@
 {
   "name": "@nestjs-utils/validation",
-  "version": "0.0.4-alpha.23",
+  "version": "0.0.1-alpha.0",
   "main": "dist/index.js",
   "types": "dist/packages/validation/src/index.d.ts",
   "scripts": {
@@ -16,7 +16,6 @@
     "/src",
     "/dist"
   ],
-  "devDependencies": {},
   "peerDependencies": {
     "@nestjs/common": "^6.8.2",
     "@nestjs/core": "^6.8.2",
