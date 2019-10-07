@@ -5,22 +5,29 @@ import { LOGGER_CONFIG_SYMBOL } from './common'
 
 const prefix = '___LOGGER'
 
-export const injectProviders: FactoryProvider[] = []
+export const registeredProviders: FactoryProvider[] = []
 
-export const loggers: { [key: string]: Logger } = {}
-
-export function InjectLogger(name: string): MethodDecorator {
+export function InjectLogger(
+  nameOrClass?: string | (new (...args: any[]) => any),
+  options?: LoggerOptions,
+): MethodDecorator {
   return () => {
     const key = [prefix, name].join('__')
-    injectProviders.push({
+    registeredProviders.push({
       provide: key,
-      useFactory(options: LoggerOptions): Logger {
-        const logger = createLogger(options)
-        if (loggers[name]) {
-          throw new Error(`logger with name "${name}" already existed`)
-        }
-        loggers[name] = logger
-        return logger
+      useFactory(defaultOptions?: LoggerOptions): Logger {
+        return createLogger({
+          ...defaultOptions,
+          ...options,
+          defaultMeta: {
+            ...(defaultOptions && defaultOptions.defaultMeta),
+            ...(options && options.defaultMeta),
+            tag:
+              name && typeof nameOrClass === 'function'
+                ? nameOrClass.name
+                : nameOrClass,
+          },
+        })
       },
       inject: [LOGGER_CONFIG_SYMBOL],
     })

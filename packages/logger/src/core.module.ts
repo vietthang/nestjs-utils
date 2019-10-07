@@ -1,7 +1,7 @@
 import { DynamicModule, Global } from '@nestjs/common'
 import { LoggerOptions } from 'winston'
 import { LOGGER_CONFIG_SYMBOL } from './common'
-import { injectProviders } from './injectLogger.decorator'
+import { registeredProviders } from './injectLogger.decorator'
 
 export type CoreModuleOptions = LoggerOptions
 
@@ -15,11 +15,11 @@ export class LoggerCoreModule {
           provide: LOGGER_CONFIG_SYMBOL,
           useValue: options,
         },
-        ...injectProviders,
+        ...registeredProviders,
       ],
       exports: [
         LOGGER_CONFIG_SYMBOL,
-        ...injectProviders.map(provider => provider.provide),
+        ...registeredProviders.map(provider => provider.provide),
       ],
     }
   }
