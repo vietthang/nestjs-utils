@@ -1,0 +1,27 @@
+{
+  "name": "@nestjs-utils/tunnel",
+  "version": "0.0.4-alpha.23",
+  "main": "dist/index.js",
+  "types": "dist/packages/tunnel/src/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "prebuild": "yarn clean",
+    "build": "tsdx build --tsconfig tsconfig.build.json --entry src/index.ts"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "/src",
+    "/dist"
+  ],
+  "devDependencies": {},
+  "peerDependencies": {
+    "@nestjs/common": "^6.8.2",
+    "@nestjs/core": "^6.8.2"
+  },
+  "dependencies": {
+    "http-proxy-middleware": "^0.20.0"
+  }
+}
