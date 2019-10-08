@@ -1684,6 +1684,13 @@
   dependencies:
     socket.io "2.3.0"
 
+"@nestjs/testing@^6.8.2":
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.8.2.tgz#1c28fbe6c46fa3757ee0143b49f6c0f917117f93"
+  integrity sha512-suNHK7Ij933zDdvi+JLe7Y1y4aJ6yhrdw4J7AcX5NiwQgkzgrJxgEs7dgjXO5i0CAVb7yB8hxyQEi+jQOv6ctQ==
+  dependencies:
+    optional "0.1.4"
+
 "@nestjs/websockets@^6.8.2":
   version "6.8.2"
   resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.8.2.tgz#b7c52ff135dd2ced5b0fd9d97bb5278ee57f7741"
@@ -1926,6 +1933,13 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@types/rc/-/rc-1.1.0.tgz#59cf49ae07e2a34ab744231287b85d9e15a580a2"
   integrity sha512-qw1q31xPnaeExbOA1daA3nfeKW2uZQN4Xg8QqZDM3vsXPHK/lyDpjWXJQIcrByRDcBzZJ3ccchSMMTDtCWgFpA==
+
+"@types/reflect-metadata@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@types/reflect-metadata/-/reflect-metadata-0.1.0.tgz#592805bdf6d63dd7229773218afeba37ac2eab16"
+  integrity sha512-bXltFLY3qhzCnVYP5iUpeSICagQ8rc9K2liS+8M0lBcz54BHs3O6W5UvqespVSuebo1BXLi+/y9ioELAW9SC2A==
+  dependencies:
+    reflect-metadata "*"
 
 "@types/resolve@0.0.8":
   version "0.0.8"
@@ -7576,6 +7590,11 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
+optional@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/optional/-/optional-0.1.4.tgz#cdb1a9bedc737d2025f690ceeb50e049444fd5b3"
+  integrity sha512-gtvrrCfkE08wKcgXaVwQVgwEQ8vel2dc5DDBn9RLQZ3YtmtkBss6A2HY6BnJH4N/4Ku97Ri/SF8sNWE2225WJw==
+
 optionator@^0.8.1, optionator@^0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
@@ -8424,6 +8443,11 @@ redent@^2.0.0:
   dependencies:
     indent-string "^3.0.0"
     strip-indent "^2.0.0"
+
+reflect-metadata@*, reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
@@ -10004,10 +10028,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.7.0-beta:
-  version "3.7.0-beta"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.0-beta.tgz#4ad556e0eee14b90ecc39261001690e16e5eeba9"
-  integrity sha512-4jyCX+IQamrPJxgkABPq9xf+hUN+GWHVxoj+oey1TadCPa4snQl1RKwUba+1dyzYCamwlCxKvZQ3TjyWLhMGBA==
+typescript@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.3.tgz#fea942fabb20f7e1ca7164ff626f1a9f3f70b4da"
+  integrity sha512-N7bceJL1CtRQ2RiG0AQME13ksR7DiuQh/QehubYcghzv20tnh+MQnQIuJddTmsbqYj+dztchykemz0zFzlvdQw==
 
 uglify-js@^3.1.4:
   version "3.6.0"

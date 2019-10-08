@@ -11,6 +11,10 @@ export function InjectLogger(
   nameOrClass?: string | (new (...args: any[]) => any),
   options?: LoggerOptions,
 ) {
+  const name =
+    nameOrClass && typeof nameOrClass === 'function'
+      ? nameOrClass.name
+      : nameOrClass
   const key = [prefix, name].join('__')
   registeredProviders.push({
     provide: key,
@@ -21,10 +25,7 @@ export function InjectLogger(
         defaultMeta: {
           ...(defaultOptions && defaultOptions.defaultMeta),
           ...(options && options.defaultMeta),
-          tag:
-            name && typeof nameOrClass === 'function'
-              ? nameOrClass.name
-              : nameOrClass,
+          tag: name,
         },
       })
     },

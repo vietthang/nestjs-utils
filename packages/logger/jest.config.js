@@ -1,6 +1,6 @@
-import path from 'path'
-import { pathsToModuleNameMapper } from 'ts-jest/utils'
-import ts from 'typescript'
+const path = require('path')
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
+const ts = require('typescript')
 
 const compilerOptions = ts.readJsonConfigFile(
   path.resolve(__dirname, './tsconfig.build.json'),
