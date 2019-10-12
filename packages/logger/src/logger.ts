@@ -1,6 +1,11 @@
-import { Context } from '@nestjs-utils/common'
+import {
+  ClientIdContextKey,
+  Context,
+  RequestIdContextKey,
+  RequestTimeContextKey,
+  TypedKey,
+} from '@nestjs-utils/common'
 import winston from 'winston'
-import { TypedKey } from '../../common/src/context'
 
 export interface Logger {
   error(context: Context, message: string, meta?: unknown): void
@@ -12,11 +17,10 @@ export interface Logger {
 }
 
 interface LoggersConfig {
-  clientId?: string
   levels: { [key: string]: string | undefined }
 }
 
-export const LoggersContextKey: TypedKey<LoggersConfig> = 'loggers'
+export const LoggersContextKey = 'loggers' as TypedKey<LoggersConfig>
 
 export class WinstonLogger implements Logger {
   private readonly logger: winston.Logger
@@ -29,15 +33,19 @@ export class WinstonLogger implements Logger {
       ...options,
       level: 'silly',
       format: winston.format(({ context, ...info }) => {
-        const config = (context as Context).value(LoggersContextKey)
+        const ctx: Context = context
+        const config = ctx.value(LoggersContextKey)
         const contextLevel = (config && config.levels[this.name]) || 'info'
-        const clientId = config && config.clientId
         const { level } = info
-        if (this.logger.levels[contextLevel] > this.logger.levels[level]) {
+        if (this.logger.levels[contextLevel] < this.logger.levels[level]) {
           return false
         }
 
-        return { ...info, module: name, clientId }
+        const clientId = ctx.value(ClientIdContextKey)
+        const requestId = ctx.value(RequestIdContextKey)
+        const requestTime = ctx.value(RequestTimeContextKey)
+
+        return { ...info, module: name, clientId, requestId, requestTime }
       })(),
     })
   }

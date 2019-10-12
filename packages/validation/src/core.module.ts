@@ -17,6 +17,7 @@ async function makeDefaultDecoder(): Promise<Decoder<unknown>> {
     bigIntPlugin,
     regexPlugin,
     phonePlugin,
+    id64Plugin,
     commonTypesPlugin,
   } = await import('@cogitatio/joi')
 
@@ -26,6 +27,7 @@ async function makeDefaultDecoder(): Promise<Decoder<unknown>> {
     bigIntPlugin,
     regexPlugin,
     phonePlugin,
+    id64Plugin,
     commonTypesPlugin,
   ])
 }

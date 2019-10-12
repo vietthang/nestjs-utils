@@ -2,7 +2,7 @@ export interface AppErrorOptions {
   code?: string
   status?: number
   message?: string
-  origin?: Error
+  origin?: unknown
   extra?: unknown
 }
 
@@ -39,7 +39,7 @@ export class AppError extends Error {
 
   public readonly status: number
 
-  public readonly origin?: Error
+  public readonly origin?: unknown
 
   public readonly extra?: unknown
 
@@ -60,5 +60,12 @@ export class AppError extends Error {
 
   public toJSON() {
     return formatErrorToJSON(this)
+  }
+
+  public extend(options: AppErrorOptions): AppError {
+    return new AppError({
+      ...this,
+      options,
+    })
   }
 }

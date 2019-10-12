@@ -1,4 +1,4 @@
-export type TypedKey<T> = string & { __type?: T }
+export type TypedKey<T> = string & { __type: T }
 
 export type ExtractType<T> = T extends TypedKey<infer U>
   ? U
@@ -9,7 +9,7 @@ export type ExtractType<T> = T extends TypedKey<infer U>
 export class Context {
   public static background = new Context()
 
-  public static TODO = new Context()
+  public static todo = new Context()
 
   private constructor(
     private readonly parent?: Context,
@@ -32,11 +32,5 @@ export class Context {
 
   public withValue<T = any>(key: TypedKey<T>, value: T): Context {
     return new Context(this, { [key]: value })
-  }
-
-  public withValues<
-    M extends { [key in TypedKey<unknown>]: ExtractType<M[key]> }
-  >(values: { [key: string]: unknown }): Context {
-    return new Context(this, values)
   }
 }

@@ -1,4 +1,4 @@
-export { Context } from './context'
+export { Context, TypedKey } from './context'
 
 export { AppError, formatErrorToJSON } from './error'
 
@@ -14,4 +14,18 @@ export {
   clientTimeout,
   conflict,
   gone,
+  wrapAsync,
 } from './error-util'
+
+export {
+  ClientIdContextKey,
+  ClientId,
+  clientIdMiddleware,
+  ClientIdMiddlewareOptions,
+  RequestId,
+  RequestIdContextKey,
+  requestIdMiddleware,
+  RequestIdMiddlewareOptions,
+  RequestTimeContextKey,
+  requestTimeMiddleware,
+} from './request-id'

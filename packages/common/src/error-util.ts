@@ -6,7 +6,7 @@ export function error(options: AppErrorOptions): AppError {
 
 export type QuickAppErrorOptions = Omit<AppErrorOptions, 'status'>
 
-export function badRequest(options: QuickAppErrorOptions): AppError {
+export function badRequest(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_BAD_REQUEST',
     message: 'Bad Request',
@@ -15,7 +15,7 @@ export function badRequest(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function unauthorized(options: QuickAppErrorOptions): AppError {
+export function unauthorized(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_UNAUTHORIZED',
     message: 'Unauthorized',
@@ -24,7 +24,7 @@ export function unauthorized(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function paymentRequired(options: QuickAppErrorOptions): AppError {
+export function paymentRequired(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_PAYMENT_REQUIRED',
     message: 'Payment Required',
@@ -33,7 +33,7 @@ export function paymentRequired(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function forbidden(options: QuickAppErrorOptions): AppError {
+export function forbidden(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_FORBIDDEN',
     message: 'Forbidden',
@@ -42,7 +42,7 @@ export function forbidden(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function notFound(options: QuickAppErrorOptions): AppError {
+export function notFound(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_NOT_FOUND',
     message: 'Not Found',
@@ -51,7 +51,7 @@ export function notFound(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function methodNotAllowed(options: QuickAppErrorOptions): AppError {
+export function methodNotAllowed(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_METHOD_NOT_ALLOWED',
     message: 'Method Not Allowed',
@@ -60,7 +60,7 @@ export function methodNotAllowed(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function notAcceptable(options: QuickAppErrorOptions): AppError {
+export function notAcceptable(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_NOT_ACCEPTABLE',
     message: 'Not Acceptable',
@@ -69,7 +69,7 @@ export function notAcceptable(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function clientTimeout(options: QuickAppErrorOptions): AppError {
+export function clientTimeout(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_CLIENT_TIMEOUT',
     message: 'Client Timeout',
@@ -78,7 +78,7 @@ export function clientTimeout(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function conflict(options: QuickAppErrorOptions): AppError {
+export function conflict(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_CONFLICT',
     message: 'Conflict',
@@ -87,7 +87,7 @@ export function conflict(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function gone(options: QuickAppErrorOptions): AppError {
+export function gone(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_GONE',
     message: 'Gone',
@@ -96,7 +96,7 @@ export function gone(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function internal(options: QuickAppErrorOptions): AppError {
+export function internal(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_INTERNAL',
     message: 'Internal Server Error',
@@ -105,7 +105,7 @@ export function internal(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function notImplemented(options: QuickAppErrorOptions): AppError {
+export function notImplemented(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_NOT_IMPLEMENTED',
     message: 'Not Implemented',
@@ -114,7 +114,7 @@ export function notImplemented(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function badGateway(options: QuickAppErrorOptions): AppError {
+export function badGateway(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_BAD_GATEWAY',
     message: 'Bad Gateway',
@@ -123,7 +123,9 @@ export function badGateway(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function serviceUnavailable(options: QuickAppErrorOptions): AppError {
+export function serviceUnavailable(
+  options: QuickAppErrorOptions = {},
+): AppError {
   return error({
     code: 'GENERIC_SERVICE_UNAVAILABLE',
     message: 'Service Unavailable',
@@ -132,11 +134,29 @@ export function serviceUnavailable(options: QuickAppErrorOptions): AppError {
   })
 }
 
-export function gatewayTimeut(options: QuickAppErrorOptions): AppError {
+export function gatewayTimeut(options: QuickAppErrorOptions = {}): AppError {
   return error({
     code: 'GENERIC_GATEWAY_TIMEOUT',
     message: 'Gateway Timeout',
     ...options,
     status: 504,
   })
+}
+
+export type ErrorTransformer = (origin: Error) => AppErrorOptions
+
+const defaultErrorTransformer: ErrorTransformer = origin => ({ origin })
+
+export async function wrapAsync<T>(
+  promise: Promise<T>,
+  errorTransform: ErrorTransformer = defaultErrorTransformer,
+): Promise<T> {
+  const base = internal()
+  try {
+    return promise
+  } catch (origin) {
+    const error = base.extend(errorTransform(origin))
+    error.stack = base.stack
+    throw error
+  }
 }

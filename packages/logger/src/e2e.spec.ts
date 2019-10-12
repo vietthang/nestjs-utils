@@ -1,19 +1,20 @@
+import { Context } from '@nestjs-utils/common'
 import { Injectable } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import winston from 'winston'
-import { InjectLogger, LoggerModule } from './index'
+import { InjectLogger, Logger, LoggerModule } from './index'
 
 describe('e2e', () => {
   @Injectable()
   class TestService {
     constructor(
       @InjectLogger(TestService)
-      public readonly logger: winston.Logger,
+      public readonly logger: Logger,
     ) {}
 
     public hello(): void {
-      this.logger.info('Hello')
-      this.logger.debug('Hello')
+      this.logger.info(Context.background, 'Hello')
+      this.logger.debug(Context.background, 'Hello')
     }
   }
 
@@ -38,7 +39,7 @@ describe('e2e', () => {
     expect(logSpy.mock.calls[0][0]).toMatchObject({
       level: 'info',
       message: 'Hello',
-      tag: 'TestService',
+      module: 'TestService',
     })
     expect(typeof logSpy.mock.calls[0][1]).toBe('function')
   })

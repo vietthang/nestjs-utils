@@ -23,7 +23,7 @@ export function loggerMiddleware({
       if (!debugValue) {
         return next()
       }
-      const config: { [key: string]: string | undefined } = Object.fromEntries(
+      const levels: { [key: string]: string | undefined } = Object.fromEntries(
         Object.entries(qs.parse(debugValue)).map(([key, value]) => {
           if (Array.isArray(value)) {
             return [key, value[0]]
@@ -32,11 +32,9 @@ export function loggerMiddleware({
           }
         }),
       )
-      const { clientId, ...levels } = config
       req.context = (req.context || Context.background).withValue(
         LoggersContextKey,
         {
-          clientId,
           levels,
         },
       )
