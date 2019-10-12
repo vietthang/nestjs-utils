@@ -1,7 +1,8 @@
 import { Inject } from '@nestjs/common'
 import { FactoryProvider } from '@nestjs/common/interfaces'
-import { createLogger, Logger, LoggerOptions } from 'winston'
+import { LoggerOptions } from 'winston'
 import { LOGGER_CONFIG_SYMBOL } from './common'
+import { Logger, WinstonLogger } from './logger'
 
 const prefix = '___LOGGER'
 
@@ -12,22 +13,14 @@ export function InjectLogger(
   options?: LoggerOptions,
 ) {
   const name =
-    nameOrClass && typeof nameOrClass === 'function'
+    (nameOrClass && typeof nameOrClass === 'function'
       ? nameOrClass.name
-      : nameOrClass
+      : nameOrClass) || 'Untitled'
   const key = [prefix, name].join('__')
   registeredProviders.push({
     provide: key,
     useFactory(defaultOptions?: LoggerOptions): Logger {
-      return createLogger({
-        ...defaultOptions,
-        ...options,
-        defaultMeta: {
-          ...(defaultOptions && defaultOptions.defaultMeta),
-          ...(options && options.defaultMeta),
-          tag: name,
-        },
-      })
+      return new WinstonLogger(name, { ...defaultOptions, ...options })
     },
     inject: [LOGGER_CONFIG_SYMBOL],
   })
