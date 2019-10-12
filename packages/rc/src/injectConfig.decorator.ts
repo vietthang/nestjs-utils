@@ -8,10 +8,8 @@ const PREFIX = '___RC'
 export function InjectConfig<S extends SchemaLike>(
   schema: S,
   ...keys: string[]
-): MethodDecorator {
-  return () => {
-    const provide = [PREFIX, objectSerializer(schema), ...keys].join('__')
-    registerProvider(provide, schema, ...keys)
-    Inject(provide)
-  }
+) {
+  const provide = [PREFIX, objectSerializer(schema), ...keys].join('__')
+  registerProvider(provide, schema, ...keys)
+  return Inject(provide)
 }

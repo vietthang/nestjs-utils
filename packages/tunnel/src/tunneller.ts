@@ -6,11 +6,15 @@ import proxy from 'http-proxy-middleware'
 
 export const PROXY_CONFIG_SYMBOL = Symbol('ProxyConfig')
 
+export const HOST_CONFIG_SYMBOL = Symbol('Host')
+
 @Injectable()
 export class Tunneller implements OnModuleInit {
   constructor(
     @Inject(HttpAdapterHost)
     private readonly adapterHost: HttpAdapterHost<ExpressAdapter>,
+    @Inject(HOST_CONFIG_SYMBOL)
+    private readonly host: string,
     @Inject(PROXY_CONFIG_SYMBOL)
     @Optional()
     private readonly proxyConfig?: proxy.Config,
@@ -22,9 +26,10 @@ export class Tunneller implements OnModuleInit {
   }
 
   public handle(req: Request, res: Response, next: NextFunction): void {
-    const debugTunnelHost = req.header('x-debug-tunnel')
-    if (debugTunnelHost) {
-      proxy(debugTunnelHost, this.proxyConfig)(req, res, next)
+    // TODO add authorization
+    const debugProxy = req.header('x-debug-proxy') === 'true'
+    if (debugProxy) {
+      proxy(this.host, this.proxyConfig)(req, res, next)
       return
     }
 

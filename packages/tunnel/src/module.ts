@@ -3,6 +3,7 @@ import proxy from 'http-proxy-middleware'
 import { PROXY_CONFIG_SYMBOL, Tunneller } from './tunneller'
 
 export interface TunnellerModuleOptions {
+  host: string
   proxy?: proxy.Config
 }
 
@@ -13,6 +14,7 @@ export class TunnellerModule {
       module: TunnellerModule,
       providers: [
         Tunneller,
+        { provide: PROXY_CONFIG_SYMBOL, useValue: options.proxy },
         { provide: PROXY_CONFIG_SYMBOL, useValue: options.proxy },
       ],
     }
