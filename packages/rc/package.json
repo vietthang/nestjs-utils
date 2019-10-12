@@ -17,13 +17,13 @@
     "/dist"
   ],
   "peerDependencies": {
-    "@cogitatio/core": "^0.0.5-alpha.0",
-    "@cogitatio/extra": "^0.0.5-alpha.0",
-    "@nestjs-utils/validation": "0.0.4-alpha.24",
+    "@cogitatio/core": "^0.0.5-alpha.2",
+    "@cogitatio/extra": "^0.0.5-alpha.2",
     "@nestjs/common": "^6.8.2",
     "@nestjs/core": "^6.8.2"
   },
   "dependencies": {
-    "rc": "^1.2.8"
+    "rc": "^1.2.8",
+    "@nestjs-utils/validation": "^0.0.1-alpha.0"
   }
 }

@@ -17,9 +17,9 @@
     "node": ">=10.4.0"
   },
   "devDependencies": {
-    "@cogitatio/core": "^0.0.5-alpha.0",
-    "@cogitatio/extra": "^0.0.5-alpha.0",
-    "@cogitatio/joi": "^0.0.5-alpha.0",
+    "@cogitatio/core": "^0.0.5-alpha.2",
+    "@cogitatio/extra": "^0.0.5-alpha.2",
+    "@cogitatio/joi": "^0.0.5-alpha.2",
     "@nestjs/common": "^6.8.2",
     "@nestjs/core": "^6.8.2",
     "@nestjs/platform-express": "^6.8.2",
@@ -27,6 +27,7 @@
     "@nestjs/testing": "^6.8.2",
     "@nestjs/websockets": "^6.8.2",
     "@types/express": "^4.17.1",
+    "@types/hapi__joi": "^16.0.1",
     "@types/http-proxy-middleware": "^0.19.3",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.2",

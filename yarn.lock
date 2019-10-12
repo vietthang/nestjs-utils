@@ -688,24 +688,24 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cogitatio/core@^0.0.5-alpha.0":
-  version "0.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@cogitatio/core/-/core-0.0.5-alpha.0.tgz#de0fbbfc56d79262d42fa421be8fc9a02d5d3300"
-  integrity sha512-KRiYfnwwY8bIFbYiHC4nUjnvuk3oanJfBmnUa9D0lGsFVcHlPw5B83uPk77jbXIop52iMOCPtF1arP91bvrc5A==
+"@cogitatio/core@^0.0.5-alpha.2":
+  version "0.0.5-alpha.2"
+  resolved "https://registry.yarnpkg.com/@cogitatio/core/-/core-0.0.5-alpha.2.tgz#6ec9d7daedf79faef4a71461c9883faf4b9338c4"
+  integrity sha512-48I/K/M0CF8XEKgV3flFbeFFp4WqmM5QVaFZkdFjvUT/hCpdQM4vp+r+dhjMqB7B3gBGibDUO3MPgZjVHt09ew==
 
-"@cogitatio/extra@^0.0.5-alpha.0":
-  version "0.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@cogitatio/extra/-/extra-0.0.5-alpha.0.tgz#31b7685eae1a34f7e447148cf3fa5ef3a5c7b5fc"
-  integrity sha512-yQyg0UfE+fN4Wm/o5lndnO26SxUEZzsAyZCRhM3QREQlxIdW25ttDKs4iEslSzIuaUf5jzjCq6OXmcJdlwIdPg==
+"@cogitatio/extra@^0.0.5-alpha.2":
+  version "0.0.5-alpha.2"
+  resolved "https://registry.yarnpkg.com/@cogitatio/extra/-/extra-0.0.5-alpha.2.tgz#696c3948ad16395715bc41a2e3b1d6987a57c288"
+  integrity sha512-cMNGVGdqDyk37D6gcFS+KZBkDeu2B81MxYELei2oVWeqayuif1moDcfmn9+5hdXXiIzw8Ng8bZLV+2H+Z+IMRQ==
 
-"@cogitatio/joi@^0.0.5-alpha.0":
-  version "0.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/@cogitatio/joi/-/joi-0.0.5-alpha.0.tgz#c6cd3a234d21644fcc301bbf416fe28357ef0973"
-  integrity sha512-XVpr/O9xUIxWAv1xEGN7eKD557AFIhfUV8KTdRAEV8O0TYGNdq5AWVZzDoOV/EwlgjMpyFTmS7Kh7J3/qNtQzA==
+"@cogitatio/joi@^0.0.5-alpha.2":
+  version "0.0.5-alpha.2"
+  resolved "https://registry.yarnpkg.com/@cogitatio/joi/-/joi-0.0.5-alpha.2.tgz#c7873ad01cd2360bf70dd87a96d0435567f2ad82"
+  integrity sha512-hwM7SbNOXfHASCaGsPGaYaEsTyxL/KMTbE4hYMXzlh9oIH40pInDhyXZI1cJtOIdNMZv8lZB7fNbxuJdMV5zKg==
   dependencies:
-    "@cogitatio/core" "^0.0.5-alpha.0"
-    "@cogitatio/extra" "^0.0.5-alpha.0"
-    "@hapi/joi" "^15.1.0"
+    "@cogitatio/core" "^0.0.5-alpha.2"
+    "@cogitatio/extra" "^0.0.5-alpha.2"
+    "@hapi/joi" "^16.1.7"
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
@@ -781,37 +781,43 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@hapi/address@2.x.x":
+"@hapi/address@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.2.tgz#1c794cd6dbf2354d1eb1ef10e0303f573e1c7222"
   integrity sha512-O4QDrx+JoGKZc6aN64L04vqa7e41tIiLU+OvKdcYaEMP97UttL0f9GIi9/0A4WAMx0uBd6SidDIhktZhgOcN8Q==
 
-"@hapi/bourne@1.x.x":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-1.3.2.tgz#0a7095adea067243ce3283e1b56b8a8f453b242a"
-  integrity sha512-1dVNHT76Uu5N3eJNTYcvxee+jzX4Z9lfciqRRHCU27ihbUcYi+iSc2iml5Ke1LXe1SyJCLA0+14Jh4tXJgOppA==
+"@hapi/formula@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/formula/-/formula-1.2.0.tgz#994649c7fea1a90b91a0a1e6d983523f680e10cd"
+  integrity sha512-UFbtbGPjstz0eWHb+ga/GM3Z9EzqKXFWIbSOFURU0A/Gku0Bky4bCk9/h//K2Xr3IrCfjFNhMm4jyZ5dbCewGA==
 
-"@hapi/hoek@8.x.x":
+"@hapi/hoek@^8.2.4", "@hapi/hoek@^8.3.0":
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.3.0.tgz#2b9db1cd00f3891005c77b3a8d608b88a6d0aa4d"
   integrity sha512-C0QL9bmgUXTSuf8nDeGrpMjtJG7tPUr8wG6/wxPbP62tGwCwQtdMSJYfESowmY4P3Hn593f+8OzNY5bckcu/LQ==
 
-"@hapi/joi@^15.1.0":
-  version "15.1.1"
-  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.1.1.tgz#c675b8a71296f02833f8d6d243b34c57b8ce19d7"
-  integrity sha512-entf8ZMOK8sc+8YfeOlM8pCfg3b5+WZIKBfUaaJT8UsjAAPjartzxIYm3TIbjvA4u+u++KbcXD38k682nVHDAQ==
+"@hapi/joi@^16.1.7":
+  version "16.1.7"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-16.1.7.tgz#360857223a87bb1f5f67691537964c1b4908ed93"
+  integrity sha512-anaIgnZhNooG3LJLrTFzgGALTiO97zRA1UkvQHm9KxxoSiIzCozB3RCNCpDnfhTJD72QlrHA8nwGmNgpFFCIeg==
   dependencies:
-    "@hapi/address" "2.x.x"
-    "@hapi/bourne" "1.x.x"
-    "@hapi/hoek" "8.x.x"
-    "@hapi/topo" "3.x.x"
+    "@hapi/address" "^2.1.2"
+    "@hapi/formula" "^1.2.0"
+    "@hapi/hoek" "^8.2.4"
+    "@hapi/pinpoint" "^1.0.2"
+    "@hapi/topo" "^3.1.3"
 
-"@hapi/topo@3.x.x":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.5.tgz#3baea17e456530edad69a75c3fc7cde97dd6d331"
-  integrity sha512-bi9m1jrui9LlvtVdLaHv0DqeOoe+I8dep+nEcTgW6XxJHL3xArQcilYz3tIp0cRC4gWlsVtABK7vNKg4jzEmAA==
+"@hapi/pinpoint@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@hapi/pinpoint/-/pinpoint-1.0.2.tgz#025b7a36dbbf4d35bf1acd071c26b20ef41e0d13"
+  integrity sha512-dtXC/WkZBfC5vxscazuiJ6iq4j9oNx1SHknmIr8hofarpKUZKmlUVYVIhNVzIEgK5Wrc4GMHL5lZtt1uS2flmQ==
+
+"@hapi/topo@^3.1.3":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.6.tgz#68d935fa3eae7fdd5ab0d7f953f3205d8b2bfc29"
+  integrity sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ==
   dependencies:
-    "@hapi/hoek" "8.x.x"
+    "@hapi/hoek" "^8.3.0"
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
@@ -1855,6 +1861,11 @@
     "@types/events" "*"
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/hapi__joi@^16.0.1":
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-16.0.1.tgz#ec227341ec7ce2091066cccebc3b14f6c527ba6b"
+  integrity sha512-U4I9Pfk4qH6TCXlg55qOc3F730QndZi86hGWlZHPHY7b3J+MCDIAO6EejbkaLWk7U15v+jn2J3GRVKD4ruhS2Q==
 
 "@types/http-proxy-middleware@^0.19.3":
   version "0.19.3"
