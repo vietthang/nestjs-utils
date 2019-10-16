@@ -153,7 +153,7 @@ export async function wrapAsync<T>(
 ): Promise<T> {
   const base = internal()
   try {
-    return promise
+    return await promise
   } catch (origin) {
     const error = base.extend(errorTransform(origin))
     error.stack = base.stack
