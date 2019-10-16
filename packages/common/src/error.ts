@@ -65,7 +65,7 @@ export class AppError extends Error {
   public extend(options: AppErrorOptions): AppError {
     return new AppError({
       ...this,
-      options,
+      ...options,
     })
   }
 }
