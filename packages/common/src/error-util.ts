@@ -155,7 +155,7 @@ export async function wrapAsync<T>(
   try {
     return await promise
   } catch (origin) {
-    const error = base.extend({ origin: errorTransform(origin) })
+    const error = base.extend(errorTransform(origin))
     error.stack = base.stack
     throw error
   }
