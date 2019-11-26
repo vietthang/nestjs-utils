@@ -10,26 +10,9 @@ export const DECODER_SYMBOL = Symbol('Decoder')
 
 async function makeDefaultDecoder(): Promise<Decoder<unknown>> {
   // import dynamically to allow "@cogitatio/joi" stay in peerDependencies and not included if not required
-  const {
-    JoiDecoder,
-    emptyPlugin,
-    singleArrayPlugin,
-    bigIntPlugin,
-    regexPlugin,
-    phonePlugin,
-    id64Plugin,
-    commonTypesPlugin,
-  } = await import('@cogitatio/joi')
+  const { JoiDecoder } = await import('@cogitatio/joi')
 
-  return new JoiDecoder([
-    emptyPlugin,
-    singleArrayPlugin,
-    bigIntPlugin,
-    regexPlugin,
-    phonePlugin,
-    id64Plugin,
-    commonTypesPlugin,
-  ])
+  return new JoiDecoder()
 }
 
 @Global()

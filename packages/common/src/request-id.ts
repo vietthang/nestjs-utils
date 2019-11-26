@@ -7,7 +7,7 @@ declare module 'express' {
   }
 }
 
-export type ClientId = string & { __requestId: true }
+export type ClientId = string & { __clientId: true }
 
 export const ClientIdContextKey = 'clientId' as TypedKey<ClientId>
 
@@ -62,11 +62,21 @@ export function requestIdMiddleware({
 
 export const RequestTimeContextKey = 'requestTime' as TypedKey<Date>
 
-export function requestTimeMiddleware() {
+export interface RequestTimeMiddlewareOptions {
+  dateGenerator?: () => Promise<Date> | Date
+}
+
+function currentDateGenerator() {
+  return new Date()
+}
+
+export function requestTimeMiddleware({
+  dateGenerator = currentDateGenerator,
+}: RequestTimeMiddlewareOptions) {
   return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       const context = req.context || Context.background
-      req.context = context.withValue(RequestTimeContextKey, new Date())
+      req.context = context.withValue(RequestTimeContextKey, dateGenerator())
       return next()
     } catch (error) {
       return next(error)

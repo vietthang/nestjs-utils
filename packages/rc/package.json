@@ -19,8 +19,8 @@
   "peerDependencies": {
     "@cogitatio/core": "^0.0.5-alpha.2",
     "@cogitatio/extra": "^0.0.5-alpha.2",
-    "@nestjs/common": "^6.8.2",
-    "@nestjs/core": "^6.8.2"
+    "@nestjs/common": "^6.10.1",
+    "@nestjs/core": "^6.10.1"
   },
   "dependencies": {
     "@nestjs-utils/validation": "^0.0.1-alpha.3",
