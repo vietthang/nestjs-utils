@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common'
 import proxy from 'http-proxy-middleware'
-import { PROXY_CONFIG_SYMBOL, Tunneller } from './tunneller'
+import { HOST_CONFIG_SYMBOL, PROXY_CONFIG_SYMBOL, Tunneller } from './tunneller'
 
 export interface TunnellerModuleOptions {
   host: string
@@ -15,7 +15,7 @@ export class TunnellerModule {
       providers: [
         Tunneller,
         { provide: PROXY_CONFIG_SYMBOL, useValue: options.proxy },
-        { provide: PROXY_CONFIG_SYMBOL, useValue: options.proxy },
+        { provide: HOST_CONFIG_SYMBOL, useValue: options.host },
       ],
     }
   }
