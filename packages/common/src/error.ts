@@ -10,7 +10,7 @@ export function formatErrorToJSON(error: unknown): unknown {
   if (error instanceof AppError) {
     return {
       code: error.code,
-      httpCode: error.status,
+      status: error.status,
       message: error.message,
       stack: error.stack,
       origin: error.origin ? formatErrorToJSON(error) : undefined,
@@ -21,7 +21,7 @@ export function formatErrorToJSON(error: unknown): unknown {
   if (error instanceof Error) {
     return {
       code: 'INTERNAL_ERROR',
-      httpCode: 500,
+      status: 500,
       message: error.message,
       stack: error.message,
     }
@@ -29,7 +29,7 @@ export function formatErrorToJSON(error: unknown): unknown {
 
   return {
     code: 'INTERNAL_ERROR',
-    httpCode: 500,
+    status: 500,
     message: 'unknown error',
   }
 }

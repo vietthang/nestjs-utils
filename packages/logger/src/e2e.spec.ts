@@ -1,7 +1,8 @@
-import { Context } from '@nestjs-utils/common'
+import { Context, RequestId, RequestIdContextKey } from '@nestjs-utils/common'
 import { Injectable } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import winston from 'winston'
+import Transport from 'winston-transport'
 import { InjectLogger, Logger, LoggerModule } from './index'
 
 describe('e2e', () => {
@@ -16,10 +17,30 @@ describe('e2e', () => {
       this.logger.info(Context.background, 'Hello')
       this.logger.debug(Context.background, 'Hello')
     }
+
+    public logWithMeta(): void {
+      this.logger.info(
+        Context.background.withValue(RequestIdContextKey, 'foo' as RequestId),
+        'Hello',
+        {
+          exception: new Error('My Error'),
+          labels: ['foo'],
+          foo: 'bar',
+        },
+      )
+    }
   }
 
-  it('should be ok', async () => {
-    const transport = new winston.transports.Console()
+  it('e2e', async () => {
+    class NullTransport extends Transport {
+      public log(_: any, next: () => void) {
+        next()
+
+        return this
+      }
+    }
+
+    const transport = new NullTransport()
     const logSpy = jest.spyOn(transport, 'log')
     const module = await Test.createTestingModule({
       imports: [
@@ -42,5 +63,17 @@ describe('e2e', () => {
       module: 'TestService',
     })
     expect(typeof logSpy.mock.calls[0][1]).toBe('function')
+
+    testService.logWithMeta()
+    expect(logSpy).toHaveBeenCalledTimes(2)
+    expect(logSpy.mock.calls[1][0]).toMatchObject({
+      level: 'info',
+      message: 'Hello',
+      module: 'TestService',
+      labels: ['foo'],
+      meta: { foo: 'bar' },
+      exception: { code: 'UNKNOWN_ERROR', status: 500, message: 'My Error' },
+    })
+    expect(typeof logSpy.mock.calls[1][1]).toBe('function')
   })
 })
