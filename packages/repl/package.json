@@ -1,6 +1,6 @@
 {
   "name": "@nestjs-utils/repl",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.12",
   "main": "dist/index.js",
   "types": "dist/packages/repl/src/index.d.ts",
   "scripts": {
