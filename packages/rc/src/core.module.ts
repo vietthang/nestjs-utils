@@ -50,6 +50,7 @@ export class CoreModule {
       ],
       exports: [
         CONFIG_SYMBOL,
+        CONFIG_DECODER_SYMBOL,
         ...registeredProviders.map(provider => provider.provide),
       ],
     }
