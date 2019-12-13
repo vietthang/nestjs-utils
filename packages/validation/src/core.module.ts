@@ -6,7 +6,7 @@ export interface CoreModuleOptions {
   decoder?: Decoder<unknown>
 }
 
-export const DECODER_SYMBOL = Symbol('Decoder')
+export const DECODER_SYMBOL = '___nestjs_utils_Decoder'
 
 async function makeDefaultDecoder(): Promise<Decoder<unknown>> {
   // import dynamically to allow "@cogitatio/joi" stay in peerDependencies and not included if not required

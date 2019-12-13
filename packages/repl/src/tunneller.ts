@@ -4,7 +4,7 @@ import { ExpressAdapter } from '@nestjs/platform-express'
 import { Application, NextFunction, Request, Response } from 'express'
 import proxy from 'http-proxy-middleware'
 
-export const PROXY_CONFIG_SYMBOL = Symbol('ProxyConfig')
+export const PROXY_CONFIG_SYMBOL = '___nestjs_utils_ProxyConfig'
 
 @Injectable()
 export class Tunneller implements OnModuleInit {

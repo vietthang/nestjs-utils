@@ -1,9 +1,9 @@
 import { Decoder, Resolve, SchemaLike } from '@cogitatio/core'
 import { Abstract, FactoryProvider, Type } from '@nestjs/common/interfaces'
 
-export const CONFIG_SYMBOL = Symbol('Config')
+export const CONFIG_SYMBOL = '___nestjs_utils_Config'
 
-export const CONFIG_DECODER_SYMBOL = Symbol('CONFIG_DECODER')
+export const CONFIG_DECODER_SYMBOL = '___nestjs_utils_ConfigDecoder'
 
 export const registeredProviders: FactoryProvider[] = []
 

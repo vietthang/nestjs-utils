@@ -1,1 +1,1 @@
-export const LOGGER_CONFIG_SYMBOL = Symbol('LoggerConfig')
+export const LOGGER_CONFIG_SYMBOL = '___nestjs_utils_LoggerConfig'
