@@ -17,9 +17,9 @@
     "node": ">=10.4.0"
   },
   "devDependencies": {
-    "@cogitatio/core": "^0.0.5-alpha.5",
-    "@cogitatio/extra": "^0.0.5-alpha.5",
-    "@cogitatio/joi": "^0.0.5-alpha.5",
+    "@cogitatio/core": "^0.0.10",
+    "@cogitatio/extra": "^0.0.10",
+    "@cogitatio/joi": "^0.0.10",
     "@nestjs/common": "^6.10.1",
     "@nestjs/core": "^6.10.1",
     "@nestjs/platform-express": "^6.10.1",
